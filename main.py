@@ -35,7 +35,7 @@ def get_image_paths_and_labels(folder):
     return image_paths, labels
 
 
-def train_model(data_dir, epochs):
+def train_model(data_dir, epochs, use_augment=False):
     seed_everything()
     device = torch.device(DEVICE if torch.cuda.is_available() else "cpu")
 
@@ -44,11 +44,24 @@ def train_model(data_dir, epochs):
         image_paths, labels, test_size=0.2, stratify=labels, random_state=SEED
     )
 
-    transform = transforms.Compose([
-        transforms.Resize((IMG_SIZE, IMG_SIZE)),
-        transforms.ToTensor(),
-        transforms.Normalize([0.5]*3, [0.5]*3)
-    ])
+
+    if use_augment:
+        transform = transforms.Compose([
+            transforms.Resize((IMG_SIZE, IMG_SIZE)),
+            transforms.RandomHorizontalFlip(p=0.5),
+            transforms.RandomRotation(degrees=10),
+            transforms.ColorJitter(brightness=0.2, contrast=0.2),
+            transforms.ToTensor(),
+            transforms.Normalize([0.5]*3, [0.5]*3)
+        ])
+        print("Using augmented training transforms.")
+    else:
+        transform = transforms.Compose([
+            transforms.Resize((IMG_SIZE, IMG_SIZE)),
+            transforms.ToTensor(),
+            transforms.Normalize([0.5]*3, [0.5]*3)
+        ])
+        print("Using basic training transforms (no augmentation).")
 
     train_ds = ArtifactDataset(train_paths, train_labels, transform)
     val_ds = ArtifactDataset(val_paths, val_labels, transform)
@@ -123,6 +136,10 @@ def main():
         "--epochs", type=int, default=NUM_EPOCHS,
         help="Number of training epochs"
     )
+    train_parser.add_argument(
+    "--augment", action="store_true",
+    help="Enable data augmentation (flip, rotate, jitter)"
+    )
 
     # --- Test command ---
     test_parser = subparsers.add_parser("test", help="Run inference on test set")
@@ -138,7 +155,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "train":
-        train_model(args.data_dir, args.epochs)
+        train_model(data_dir=args.data_dir, epochs=args.epochs, use_augment=args.augment)
     elif args.command == "test":
         run_inference(args.data_dir, args.output)
 

@@ -2,7 +2,7 @@ filename,prediction
 image_00076_1.png,1
 image_00045_0.png,0
 image_00081_1.png,1
-image_00154_1.png,0
+image_00154_1.png,1
 image_00128_1.png,1
 image_00134_1.png,1
 image_00018_0.png,0
@@ -22,7 +22,7 @@ image_00029_1.png,1
 image_00104_1.png,1
 image_00112_1.png,1
 image_00038_1.png,1
-image_00016_1.png,0
+image_00016_1.png,1
 image_00172_1.png,1
 image_00184_1.png,1
 image_00058_1.png,1
@@ -30,7 +30,7 @@ image_00091_1.png,1
 image_00137_1.png,1
 image_00156_1.png,1
 image_00144_1.png,1
-image_00066_0.png,1
+image_00066_0.png,0
 image_00007_1.png,1
 image_00139_1.png,1
 image_00130_1.png,1
@@ -53,7 +53,7 @@ image_00023_1.png,1
 image_00049_1.png,1
 image_00077_1.png,1
 image_00166_1.png,1
-image_00082_1.png,0
+image_00082_1.png,1
 image_00019_1.png,1
 image_00008_1.png,1
 image_00125_1.png,1
