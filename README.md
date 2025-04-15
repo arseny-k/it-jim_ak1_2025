@@ -88,8 +88,8 @@ python main.py test --data-dir ./data/trainee_dataset/test --output results.csv
 ---
 
 ## 📊 Evaluation Metrics
-- **Micro F1 Score** (on full test set)
-- **Artifact-only Accuracy** (optional)
+- Micro F1 score on test set: **0.9600**
+- Artifact-only accuracy: **75.00%**
 
 ---
 
