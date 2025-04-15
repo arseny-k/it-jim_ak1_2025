@@ -59,11 +59,12 @@ python main.py train
 ```bash
 --data-dir   Path to training data (default: ./data/train)
 --epochs     Number of training epochs (default: from config)
+--augment    Enable data augmentation (flip, rotate, jitter)
 ```
 
 Example:
 ```bash
-python main.py train --data-dir ./data/trainee_dataset/train --epochs 20
+python main.py train --data-dir ./data/trainee_dataset/train --epochs 20 --augment
 ```
 
 ---
