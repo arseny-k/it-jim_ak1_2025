@@ -24,7 +24,7 @@ it-jim_ak1_2025/
 
 0. **Clone the repository**
    ```bash
-   git clone <repo-url>
+   git clone [<repo-url>](https://github.com/arseny-k/it-jim_ak1_2025)
    cd it-jim_ak1_2025
    ```
 
